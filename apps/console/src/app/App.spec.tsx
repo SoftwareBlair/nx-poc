@@ -11,6 +11,6 @@ describe('App', () => {
 
   test('should have a greeting as the title', () => {
     const { getByText } = render(<App />);
-    expect(getByText(/Welcome console/gi)).toBeTruthy();
+    expect(getByText(/Nx POC Console/gi)).toBeTruthy();
   });
 });
