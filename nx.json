@@ -41,7 +41,7 @@
       "inputs": [
         "default",
         "^production",
-        "{workspaceRoot}/jest.preset.js"
+        "{workspaceRoot}/vitest.config.ts"
       ]
     }
   },
@@ -55,7 +55,7 @@
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s"
+      "!{projectRoot}/vitest.config.[jt]s"
     ],
     "sharedGlobals": [
       "{workspaceRoot}/babel.config.json"
