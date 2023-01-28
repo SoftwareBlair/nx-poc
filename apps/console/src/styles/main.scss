@@ -1,0 +1,10 @@
+@use './normalize';
+@use './colors';
+@use './mixins';
+@use './variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
