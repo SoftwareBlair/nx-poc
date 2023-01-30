@@ -39,7 +39,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "console:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/console/proxy.conf.json"
       },
       "configurations": {
         "development": {
