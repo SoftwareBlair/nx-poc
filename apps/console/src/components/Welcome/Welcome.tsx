@@ -3,7 +3,7 @@ import styles from './Welcome.module.scss';
 export function Welcome() {
   return (
     <div className={styles['container']}>
-      <h2>Welcome to Nx POC Dashboard!</h2>
+      <h2>Welcome the to Nx POC Dashboard!</h2>
       <p>
         This is a POC for a dashboard application built with Nx.
       </p>
