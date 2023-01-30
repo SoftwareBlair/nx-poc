@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './AllProducts.module.scss';
 
-/* eslint-disable-next-line */
-export interface Products {
+export interface Product {
   id: string;
   name: string;
   price: number;
@@ -13,10 +12,10 @@ export interface Products {
 
 export function AllProducts() {
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('api/products')
+    fetch('products-api/products')
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error(err))
@@ -41,7 +40,7 @@ export function AllProducts() {
               <td colSpan={4}>Loading...</td>
             </tr>
           )}
-          {products?.map((product: Products) => (
+          {products?.map((product: Product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>

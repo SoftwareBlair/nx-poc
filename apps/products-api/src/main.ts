@@ -8,7 +8,7 @@ const app = express();
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use(express.json());
-app.get('/api', (req, res) => {
+app.get('/products-api', (req, res) => {
   res.send({ message: 'Welcome to products-api!' });
 });
 

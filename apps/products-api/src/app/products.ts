@@ -29,11 +29,11 @@ export const products: Products[] = [
 ];
 
 export function productRoutes(app: Express) {
-  app.get('/api/products', (req, res) => {
+  app.get('/products-api/products', (req, res) => {
     res.send(products);
   });
 
-  app.post('/api/products', (req, res) => {
+  app.post('/products-api/products', (req, res) => {
     const { id, name, price, description } = req.body;
 
     if (!id || !name || !price || !description) {
@@ -52,7 +52,7 @@ export function productRoutes(app: Express) {
     res.status(201).send(newProduct);
   });
 
-  app.get('/api/products/:id', (req, res) => {
+  app.get('/products-api/products/:id', (req, res) => {
     const { id } = req.params;
 
     if (!id) {
@@ -63,7 +63,7 @@ export function productRoutes(app: Express) {
     res.send(products.find(product => product.id === req.params.id));
   });
 
-  app.put('/api/products/:id', (req, res) => {
+  app.put('/products-api/products/:id', (req, res) => {
     const { id } = req.params;
 
     if (!id) {
@@ -76,7 +76,7 @@ export function productRoutes(app: Express) {
     res.status(200).send(products[index]);
   });
 
-  app.delete('/api/products/:id', (req, res) => {
+  app.delete('/products-api/products/:id', (req, res) => {
     const { id } = req.params;
 
     if (!id) {
