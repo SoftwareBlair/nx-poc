@@ -1,38 +1,47 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './AllProducts.module.scss';
 
 /* eslint-disable-next-line */
-export interface AllProductsProps {}
+export interface Products {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+}
 
-export function AllProducts(props: AllProductsProps) {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: 'Product 1',
-      price: 100,
-      description: 'Product 1 description',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      price: 200,
-      description: 'Product 2 description',
-    },
-  ]);
+export function AllProducts() {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Products[]>([]);
+
+  useEffect(() => {
+    fetch('api/products')
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div className={styles.container}>
-      <h2>Welcome to AllProducts!</h2>
+      <h2>All Products</h2>
       <table className={styles.table}>
         <thead>
-          {Object.keys(products[0]).map((key) => (
-            <th>{key}</th>
-          ))}
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+          </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {loading && (
+            <tr>
+              <td colSpan={4}>Loading...</td>
+            </tr>
+          )}
+          {products?.map((product: Products) => (
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>
