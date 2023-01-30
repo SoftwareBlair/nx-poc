@@ -86,6 +86,6 @@ export function productRoutes(app: Express) {
 
     const index = products.findIndex(product => product.id === req.params.id);
     products.splice(index, 1);
-    res.status(200).send({});
+    res.status(200).send({ message: 'Product deleted' });
   });
 }
