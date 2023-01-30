@@ -5,7 +5,7 @@ import styles from './AllProducts.module.scss';
 
 /* eslint-disable-next-line */
 export interface Products {
-  id: number;
+  id: string;
   name: string;
   price: number;
   description: string;

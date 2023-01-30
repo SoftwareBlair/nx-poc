@@ -41,21 +41,49 @@ export function productRoutes(app: Express) {
       return;
     }
 
-    products.push(req.body);
-    res.status(201).send(req.body);
+    const newProduct = {
+      id,
+      name,
+      price,
+      description
+    };
+
+    products.push(newProduct);
+    res.status(201).send(newProduct);
   });
 
   app.get('/api/products/:id', (req, res) => {
+    const { id } = req.params;
+
+    if (!id) {
+      res.status(400).send({ message: 'Bad request' });
+      return;
+    }
+
     res.send(products.find(product => product.id === req.params.id));
   });
 
   app.put('/api/products/:id', (req, res) => {
+    const { id } = req.params;
+
+    if (!id) {
+      res.status(400).send({ message: 'Bad request' });
+      return;
+    }
+
     const index = products.findIndex(product => product.id === req.params.id);
     products[index] = req.body;
     res.status(200).send(products[index]);
   });
 
   app.delete('/api/products/:id', (req, res) => {
+    const { id } = req.params;
+
+    if (!id) {
+      res.status(400).send({ message: 'Bad request' });
+      return;
+    }
+
     const index = products.findIndex(product => product.id === req.params.id);
     products.splice(index, 1);
     res.status(200).send({});
