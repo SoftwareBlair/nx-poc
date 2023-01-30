@@ -14,6 +14,7 @@ specifiers:
   '@nrwl/vite': 15.6.3
   '@nrwl/webpack': 15.6.3
   '@nrwl/workspace': 15.6.3
+  '@nx-go/nx-go': ^2.7.0
   '@testing-library/react': 13.4.0
   '@types/express': 4.17.13
   '@types/jest': 28.1.1
@@ -77,6 +78,7 @@ devDependencies:
   '@nrwl/vite': 15.6.3_wbcv54vqbl567gf4udaylmrbja
   '@nrwl/webpack': 15.6.3_d4uy4osdvf7fgo6zwi2k5fjyme
   '@nrwl/workspace': 15.6.3_ru3a6u6i5jfe3w3i7orrmgwxwa
+  '@nx-go/nx-go': 2.7.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/express': 4.17.13
   '@types/jest': 28.1.1
@@ -2518,6 +2520,12 @@ packages:
       - debug
       - eslint
       - typescript
+    dev: true
+
+  /@nx-go/nx-go/2.7.0:
+    resolution: {integrity: sha512-TtesqhhHKG8uIagqHpxNlNN0MLlT0klGY8rWl83CZ1UIaEmL/2GWZMW8aHh1e0uRxBqe1hM6XNECJFADmknGTQ==}
+    dependencies:
+      fs-extra: 9.1.0
     dev: true
 
   /@parcel/watcher/2.0.4:

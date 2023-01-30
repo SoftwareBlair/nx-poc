@@ -1,35 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './AllUsers.module.scss';
 
+export interface User {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  desc: string;
+}
+
 export function AllUsers() {
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      First_Name: 'John',
-      Last_Name: 'Doe',
-      Email: 'john@doe.com',
-      Phone: '555-555-5555',
-      Address: '123 Main St.',
-      City: 'Denver',
-      State: 'CO',
-      Zip: '80202',
-      Country: 'USA',
-    },
-    {
-      id: 2,
-      First_Name: 'Jane',
-      Last_Name: 'Doe',
-      Email: 'jane@doe.com',
-      Phone: '444-444-4444',
-      Address: '321 Main St.',
-      City: 'Denver',
-      State: 'CO',
-      Zip: '80202',
-      Country: 'USA',
-    }
-  ]);
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    fetch('user-api/users')
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -37,26 +27,25 @@ export function AllUsers() {
       <table className={styles.table}>
         <thead>
           <tr>
-            {Object.keys(users[0]).map((key) => (
-              <th key={key}>{key}</th>
-            ))}
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{user.id}</td>
               <td>
-                <Link to={`/users/${user.id}`}>{user.First_Name}</Link>
+                <Link to={`/user/${user.id}`}>{user.id}</Link>
               </td>
-              <td>{user.Last_Name}</td>
-              <td>{user.Email}</td>
-              <td>{user.Phone}</td>
-              <td>{user.Address}</td>
-              <td>{user.City}</td>
-              <td>{user.State}</td>
-              <td>{user.Zip}</td>
-              <td>{user.Country}</td>
+              <td>{user.first_name}</td>
+              <td>{user.last_name}</td>
+              <td>{user.email}</td>
+              <td>{user.phone}</td>
+              <td>{user.desc}</td>
             </tr>
           ))}
         </tbody>
