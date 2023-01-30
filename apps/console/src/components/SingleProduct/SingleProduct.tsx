@@ -21,7 +21,7 @@ export function SingleProduct() {
       <h2>Welcome to SingleProduct!</h2>
       <div className={styles.product}>
         <h3>{product?.name}</h3>
-        <p>{product?.price}</p>
+        <p>${product?.price}</p>
         <p>{product?.description}</p>
       </div>
     </div>

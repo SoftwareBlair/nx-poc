@@ -9,7 +9,7 @@ function ConsoleLayout({ children }: UserConsoleLayoutProps) {
     <>
       <header className={styles.header}>
         <nav>
-          <h1>Nx POC Console</h1>
+          <h1>Nx POC</h1>
           <ul>
             <li>
               <Link to="/">Home</Link>
