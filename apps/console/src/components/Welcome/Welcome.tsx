@@ -1,9 +1,6 @@
 import styles from './Welcome.module.scss';
 
-/* eslint-disable-next-line */
-export interface WelcomeProps {}
-
-export function Welcome(props: WelcomeProps) {
+export function Welcome() {
   return (
     <div className={styles['container']}>
       <h2>Welcome to Nx POC Dashboard!</h2>
@@ -23,6 +20,15 @@ export function Welcome(props: WelcomeProps) {
         </li>
         <li>
           <a href="https://sass-lang.com" target="_blank">Sass</a> - CSS with superpowers.
+        </li>
+        <li>
+          <a href="https://nodejs.org" target="_blank">Node</a> - JavaScript runtime built on Chrome's V8 JavaScript engine.
+        </li>
+        <li>
+          <a href="https://expressjs.com" target="_blank">Express</a> - Fast, unopinionated, minimalist web framework for Node.js.
+        </li>
+        <li>
+          <a href="https://golang.org" target="_blank">Go</a> - Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
         </li>
       </ul>
     </div>
