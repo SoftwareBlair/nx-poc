@@ -1,20 +1,40 @@
 import { useRoutes } from 'react-router-dom';
 
 import { ConsoleLayout } from '../layouts';
-import { AllUsers, SingleUser } from '../app/components';
-
-
+import {
+  Welcome,
+  AllProducts,
+  AllUsers,
+  SingleProduct,
+  SingleUser
+} from '../components';
 
 export function ConsoleRoutes() {
   const routes = useRoutes([
     {
       path: '/',
-      element: <AllUsers />,
-      children: [
-        { path: '/user/:id', element: <SingleUser /> },
-        { path: '*', element: <h1>Not Found</h1>},
-      ],
+      element: <Welcome />,
     },
+    {
+      path: '/products',
+      element: <AllProducts />,
+    },
+    {
+      path: '/products/:productId',
+      element: <SingleProduct />,
+    },
+    {
+      path: '/users',
+      element: <AllUsers />,
+    },
+    {
+      path: '/users/:userId',
+      element: <SingleUser />,
+    },
+    {
+      path: '*',
+      element: <Welcome />,
+    }
   ]);
 
   return (
