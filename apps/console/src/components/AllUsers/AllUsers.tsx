@@ -39,7 +39,7 @@ export function AllUsers() {
           {users.map((user) => (
             <tr key={user.id}>
               <td>
-                <Link to={`/user/${user.id}`}>{user.id}</Link>
+                <Link to={`/users/${user.id}`}>{user.id}</Link>
               </td>
               <td>{user.first_name}</td>
               <td>{user.last_name}</td>

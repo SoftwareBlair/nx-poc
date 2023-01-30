@@ -4,7 +4,7 @@ import "nx-poc/apps/user-api/pkg/models"
 
 var Users = []models.User{
     {
-        Id:         123,
+        Id:         "123",
         First_Name: "John",
         Last_Name:  "Doe",
         Email:      "john@doe.com",
@@ -12,7 +12,7 @@ var Users = []models.User{
         Desc:       "John is a Go developer",
     },
     {
-        Id:         456,
+        Id:         "456",
         First_Name: "Jane",
         Last_Name:  "doe",
         Email:      "jane@doe.com",

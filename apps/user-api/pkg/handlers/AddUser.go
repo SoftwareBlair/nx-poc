@@ -22,7 +22,7 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
   var user models.User
   json.Unmarshal(body, &user)
 
-  user.Id = rand.Intn(1000)
+  user.Id = string(rune(rand.Intn(1000000)))
   mocks.Users = append(mocks.Users, user)
 
   w.Header().Set("Content-Type", "application/json")

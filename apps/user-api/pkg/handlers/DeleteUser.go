@@ -3,7 +3,6 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
 
@@ -12,7 +11,7 @@ import (
 
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
   vars := mux.Vars(r)
-  id, _ := strconv.Atoi(vars["id"])
+  id := vars["id"]
 
   for i, user := range mocks.Users {
     if user.Id == id {

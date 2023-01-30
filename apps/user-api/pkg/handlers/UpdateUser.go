@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
 
@@ -15,7 +14,7 @@ import (
 
 func UpdateUser(w http.ResponseWriter, r *http.Request) {
   vars := mux.Vars(r)
-  id, _ := strconv.Atoi(vars["id"])
+  id := vars["id"]
 
   defer r.Body.Close()
   body, err := ioutil.ReadAll(r.Body)
