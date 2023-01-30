@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 
 import styles from './SingleProduct.module.scss';
 
+import { Product } from '../AllProducts/AllProducts';
 
 export function SingleProduct() {
   const { productId } = useParams<{ productId: string }>();
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product>();
 
   useEffect(() => {
     fetch(`products-api/products/${productId}`)
