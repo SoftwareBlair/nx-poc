@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import ReactUi from './ReactUi';
+import TextArea from './TextArea';
 
-describe('ReactUi', () => {
+describe('TextArea', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ReactUi />);
+    const { baseElement } = render(<TextArea />);
     expect(baseElement).toBeTruthy();
   });
 });
