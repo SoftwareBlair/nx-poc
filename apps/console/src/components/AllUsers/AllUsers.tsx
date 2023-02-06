@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Input, TextArea } from '@react-ui';
+import { Button, Input, TextArea } from '@react-ui';
 
 import styles from './AllUsers.module.scss';
 
@@ -14,8 +14,57 @@ export interface User {
   desc: string;
 }
 
+interface State {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  desc: string;
+}
+
 export function AllUsers() {
   const [users, setUsers] = useState<User[]>([]);
+  const initialState = {
+    id: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    desc: '',
+  };
+  const [state, dispatch] = useReducer((state: State, action: any) => {
+    switch (action.type) {
+      case 'ID':
+        return { ...state, id: action.payload };
+      case 'FIRST_NAME':
+        return { ...state, first_name: action.payload };
+      case 'LAST_NAME':
+        return { ...state, last_name: action.payload };
+      case 'EMAIL':
+        return { ...state, email: action.payload };
+      case 'PHONE':
+        return { ...state, phone: action.payload };
+      case 'DESC':
+        return { ...state, desc: action.payload };
+      default:
+        return state;
+    }
+  }, initialState);
+
+  const submitForm = () => {
+    fetch('user-api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(state),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers([...users, data]);
+      });
+  };
 
   useEffect(() => {
     fetch('user-api/users')
@@ -26,49 +75,56 @@ export function AllUsers() {
   return (
     <div className={styles.container}>
       <h2>Add User</h2>
-      <form className={styles.form}>
+      <div className={styles.form}>
         <Input
-          name="ID"
           label="ID"
-          value=""
-          type="text"
-          onChange={() => {}}
+          name='id'
+          type='text'
+          value={state.id}
+          onChange={(e) => dispatch({ type: 'ID', payload: e.target.value })}
         />
         <Input
-          name="first_name"
           label="First Name"
-          value=""
-          type="text"
-          onChange={() => {}}
+          name='first_name'
+          type='text'
+          value={state.first_name}
+          onChange={(e) =>
+            dispatch({ type: 'FIRST_NAME', payload: e.target.value })
+          }
         />
         <Input
-          name="last_name"
           label="Last Name"
-          value=""
-          type="text"
-          onChange={() => {}}
+          name='last_name'
+          type='text'
+          value={state.last_name}
+          onChange={(e) =>
+            dispatch({ type: 'LAST_NAME', payload: e.target.value })
+          }
         />
         <Input
-          name="email"
           label="Email"
-          value=""
-          type="text"
-          onChange={() => {}}
+          name='email'
+          type='text'
+          value={state.email}
+          onChange={(e) => dispatch({ type: 'EMAIL', payload: e.target.value })}
         />
         <Input
-          name="phone"
           label="Phone"
-          value=""
-          type="text"
-          onChange={() => {}}
+          name='phone'
+          type='text'
+          value={state.phone}
+          onChange={(e) => dispatch({ type: 'PHONE', payload: e.target.value })}
         />
         <TextArea
-          name="desc"
           label="Description"
-          value=""
-          onChange={() => {}}
+          name='desc'
+          value={state.desc}
+          onChange={(e) => dispatch({ type: 'DESC', payload: e.target.value })}
         />
-      </form>
+        <div className={styles.buttonWrapper}>
+          <Button text="Submit" onClick={submitForm} />
+        </div>
+      </div>
       <div className={styles.usersTable}>
         <h3>All Users</h3>
         <table className={styles.table}>
