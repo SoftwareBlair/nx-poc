@@ -60,7 +60,7 @@ export function AllUsers() {
       .then((data) => {
         setUsers([...users, data]);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

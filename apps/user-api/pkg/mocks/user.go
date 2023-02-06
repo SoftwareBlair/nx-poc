@@ -14,7 +14,7 @@ var Users = []models.User{
 	{
 		Id:         "456",
 		First_Name: "Jane",
-		Last_Name:  "doe",
+		Last_Name:  "Doe",
 		Email:      "jane@doe.com",
 		Phone:      "123-456-7891",
 		Desc:       "Jane is a Python developer",

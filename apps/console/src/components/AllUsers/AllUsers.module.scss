@@ -14,13 +14,16 @@
   max-width: 500px;
 }
 
-.usersTable {
-  width: 100%;
-  max-width: 1000px;
+.buttonWrapper {
   margin-top: 20px;
 }
 
-.buttonWrapper {
+.usersTable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
   margin-top: 20px;
 }
 
