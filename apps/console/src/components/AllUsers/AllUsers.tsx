@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Input } from '@react-ui';
+
 import styles from './AllUsers.module.scss';
 
 export interface User {
@@ -23,7 +25,45 @@ export function AllUsers() {
 
   return (
     <div className={styles.container}>
-      <h2>All Users</h2>
+      <h2>Add User</h2>
+      <form className={styles.form}>
+        <Input
+          name="ID"
+          label="ID"
+          value=""
+          type="text"
+          onChange={() => {}}
+        />
+        <Input
+          name="first_name"
+          label="First Name"
+          value=""
+          type="text"
+          onChange={() => {}}
+        />
+        <Input
+          name="last_name"
+          label="Last Name"
+          value=""
+          type="text"
+          onChange={() => {}}
+        />
+        <Input
+          name="email"
+          label="Email"
+          value=""
+          type="text"
+          onChange={() => {}}
+        />
+        <Input
+          name="phone"
+          label="Phone"
+          value=""
+          type="text"
+          onChange={() => {}}
+        />
+      </form>
+      <h3>All Users</h3>
       <table className={styles.table}>
         <thead>
           <tr>
