@@ -12,20 +12,20 @@ import (
 )
 
 func AddUser(w http.ResponseWriter, r *http.Request) {
-  defer r.Body.Close()
-  body, err := ioutil.ReadAll(r.Body)
+	defer r.Body.Close()
+	body, err := ioutil.ReadAll(r.Body)
 
-  if err != nil {
-    log.Fatal(err)
-  }
+	if err != nil {
+		log.Fatal(err)
+	}
 
-  var user models.User
-  json.Unmarshal(body, &user)
+	var user models.User
+	json.Unmarshal(body, &user)
 
-  user.Id = string(rune(rand.Intn(1000000)))
-  mocks.Users = append(mocks.Users, user)
+	user.Id = string(rune(rand.Intn(1000000)))
+	mocks.Users = append(mocks.Users, user)
 
-  w.Header().Set("Content-Type", "application/json")
-  w.WriteHeader(http.StatusCreated)
-  json.NewEncoder(w).Encode("Created")
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode("Created")
 }
