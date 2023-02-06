@@ -1,4 +1,3 @@
-import { LibOne } from '@lib-one';
 import styles from './Welcome.module.scss';
 
 export function Welcome() {
@@ -9,7 +8,6 @@ export function Welcome() {
         This is a POC for a dashboard application built with Nx.
       </p>
       <h3>Technologies used in this demo</h3>
-      <LibOne />
       <ul>
         <li>
           <a href="https://nx.dev" target="_blank">Nx</a> - Monorepo for React, React Native, Node, and more.
