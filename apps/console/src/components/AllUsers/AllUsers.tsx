@@ -59,13 +59,15 @@ export function AllUsers() {
       .then((res) => res.json())
       .then((data) => {
         setUsers([...users, data]);
-      });
+      })
+      .catch((err) => console.log(err))
   };
 
   useEffect(() => {
     fetch('user-api/users')
       .then((res) => res.json())
-      .then((data) => setUsers(data));
+      .then((data) => setUsers(data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
