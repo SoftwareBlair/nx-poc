@@ -15,8 +15,6 @@ export function SingleUser() {
       .then((data) => setUser(data));
   }, [userId]);
 
-  console.log({ userId, user});
-
   return (
     <div className={styles.container}>
       <h2>Welcome to SingleUser!</h2>

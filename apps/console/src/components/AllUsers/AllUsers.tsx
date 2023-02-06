@@ -15,7 +15,6 @@ export interface User {
 }
 
 interface State {
-  id: string;
   first_name: string;
   last_name: string;
   email: string;
@@ -26,7 +25,6 @@ interface State {
 export function AllUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const initialState = {
-    id: '',
     first_name: '',
     last_name: '',
     email: '',
@@ -35,8 +33,6 @@ export function AllUsers() {
   };
   const [state, dispatch] = useReducer((state: State, action: any) => {
     switch (action.type) {
-      case 'ID':
-        return { ...state, id: action.payload };
       case 'FIRST_NAME':
         return { ...state, first_name: action.payload };
       case 'LAST_NAME':
@@ -76,13 +72,6 @@ export function AllUsers() {
     <div className={styles.container}>
       <h2>Add User</h2>
       <div className={styles.form}>
-        <Input
-          label="ID"
-          name='id'
-          type='text'
-          value={state.id}
-          onChange={(e) => dispatch({ type: 'ID', payload: e.target.value })}
-        />
         <Input
           label="First Name"
           name='first_name'
