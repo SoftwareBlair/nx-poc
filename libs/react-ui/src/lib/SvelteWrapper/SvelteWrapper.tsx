@@ -1,9 +1,5 @@
 import { useLayoutEffect, useRef } from 'react';;
 
-// export interface SvelteWrapperProps {
-//   SvelteComponent: any;
-// }
-
 export function SvelteWrapper(SvelteComponent: any) {
   return (props: any) => {
     const ref = useRef(null);
