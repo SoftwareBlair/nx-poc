@@ -6,8 +6,6 @@ import { Button } from '@svelte-ui';
 
 import styles from './AllUsers.module.scss';
 
-const SvelteButton = SvelteWrapper(Button);
-
 export interface User {
   id: string;
   first_name: string;
@@ -26,6 +24,7 @@ interface State {
 }
 
 export function AllUsers() {
+  const SvelteButton = SvelteWrapper(Button);
   const [users, setUsers] = useState<User[]>([]);
   const initialState = {
     first_name: '',
