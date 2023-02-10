@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
@@ -18,6 +19,7 @@ export default defineConfig({
 
   plugins: [
     react(),
+    svelte(),
     viteTsConfigPaths({
       root: '../../',
     }),

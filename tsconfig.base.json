@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@react-ui": ["libs/react-ui/src/index.ts"]
+      "@nx-poc/svelte-ui": ["libs/svelte-ui/src/index.ts"],
+      "@react-ui": ["libs/react-ui/src/index.ts"],
+      "@svelte-ui": ["libs/svelte-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,9 +1,12 @@
 import { useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, Input, TextArea } from '@react-ui';
+import { Input, SvelteWrapper, TextArea } from '@react-ui';
+import { Button } from '@svelte-ui';
 
 import styles from './AllUsers.module.scss';
+
+const SvelteButton = SvelteWrapper(Button);
 
 export interface User {
   id: string;
@@ -113,7 +116,7 @@ export function AllUsers() {
           onChange={(e) => dispatch({ type: 'DESC', payload: e.target.value })}
         />
         <div className={styles.buttonWrapper}>
-          <Button text="Submit" onClick={submitForm} />
+          <SvelteButton label="Submit" onClick={submitForm} />
         </div>
       </div>
       <div className={styles.usersTable}>
