@@ -1,6 +1,8 @@
 import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Table } from '@react-ui';
+
 import styles from './AllProducts.module.scss';
 
 export interface Product {
@@ -12,12 +14,23 @@ export interface Product {
 
 export function AllProducts() {
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [tableHeaders, setTableHeaders] = useState<string[]>([]);
+  const [tableRows, setTableRows] = useState<string[][]>([]);
 
   useEffect(() => {
     fetch('products-api/products')
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        setTableHeaders(Object.keys(data[0]));
+        setTableRows(
+          data.map((product: Product) => [
+            product.id,
+            <Link to={`/products/${product.id}`}>{product.name}</Link>,
+            `$${product.price}`,
+            product.description,
+          ])
+        );
+      })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   }, []);
@@ -25,33 +38,16 @@ export function AllProducts() {
   return (
     <div className={styles.container}>
       <h2>All Products</h2>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {loading && (
-            <tr>
-              <td colSpan={4}>Loading...</td>
-            </tr>
-          )}
-          {products?.map((product: Product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>
-                <Link to={`/products/${product.id}`}>{product.name}</Link>
-              </td>
-              <td>${product.price}</td>
-              <td>{product.description}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {loading ? (
+        <div className="flex justify-center">
+          Loading...
+        </div>
+      ) : (
+        <Table
+          headers={tableHeaders}
+          rows={tableRows}
+        />
+      )}
     </div>
   );
 }
