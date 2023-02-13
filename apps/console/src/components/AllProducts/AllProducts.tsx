@@ -37,7 +37,7 @@ export function AllProducts() {
 
   return (
     <div className={styles.container}>
-      <h2>All Products</h2>
+      <h2 className="text-lg mb-5">All Products</h2>
       {loading ? (
         <div className="flex justify-center">
           Loading...

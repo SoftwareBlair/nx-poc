@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Input, SvelteWrapper, TextArea } from '@react-ui';
+import { Input, SvelteWrapper, Table, TextArea } from '@react-ui';
 import { Button } from '@svelte-ui';
 
 import styles from './AllUsers.module.scss';
@@ -25,7 +25,8 @@ interface State {
 
 export function AllUsers() {
   const SvelteButton = SvelteWrapper(Button);
-  const [users, setUsers] = useState<User[]>([]);
+  const [tableHeaders, setTableHeaders] = useState<string[]>([]);
+  const [tableRows, setTableRows] = useState<string[][]>([]);
   const initialState = {
     first_name: '',
     last_name: '',
@@ -60,15 +61,45 @@ export function AllUsers() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUsers([...users, data]);
+        setTableRows((prev) => [
+          ...prev,
+          [
+            data.id,
+            <Link to={`/users/${data.id}`}>{data.first_name}</Link>,
+            data.last_name,
+            data.email,
+            data.phone,
+            data.desc,
+          ],
+        ]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        dispatch({ type: 'FIRST_NAME', payload: '' });
+        dispatch({ type: 'LAST_NAME', payload: '' });
+        dispatch({ type: 'EMAIL', payload: '' });
+        dispatch({ type: 'PHONE', payload: '' });
+        dispatch({ type: 'DESC', payload: '' });
+      }
+    )
   };
 
   useEffect(() => {
     fetch('user-api/users')
       .then((res) => res.json())
-      .then((data) => setUsers(data))
+      .then((data) => {
+        setTableHeaders(Object.keys(data[0]));
+        setTableRows(
+          data.map((user: User) => [
+            user.id,
+            <Link to={`/users/${user.id}`}>{user.first_name}</Link>,
+            user.last_name,
+            user.email,
+            user.phone,
+            user.desc,
+          ])
+        );
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -120,32 +151,7 @@ export function AllUsers() {
       </div>
       <div className={styles.usersTable}>
         <h3>All Users</h3>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>
-                  <Link to={`/users/${user.id}`}>{user.id}</Link>
-                </td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>{user.email}</td>
-                <td>{user.phone}</td>
-                <td>{user.desc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table headers={tableHeaders} rows={tableRows} />
       </div>
     </div>
   );

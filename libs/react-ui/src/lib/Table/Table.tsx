@@ -1,6 +1,5 @@
 import styles from './Table.module.scss';
 
-/* eslint-disable-next-line */
 export interface TableProps {
   headers: string[];
   rows: string[][];
@@ -18,9 +17,9 @@ export function Table({ headers, rows }: TableProps) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <tr key={row[0]}>
-              {row.map((cell) => (
+          {rows.map((row, i) => (
+            <tr key={i}>
+              {row.map((cell: any) => (
                 <td key={cell}>{cell}</td>
               ))}
             </tr>

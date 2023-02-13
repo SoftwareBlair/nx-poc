@@ -2,11 +2,12 @@ import { useRoutes } from 'react-router-dom';
 
 import { ConsoleLayout } from '../layouts';
 import {
-  Welcome,
+  AddUser,
   AllProducts,
   AllUsers,
   SingleProduct,
-  SingleUser
+  SingleUser,
+  Welcome,
 } from '../components';
 
 export function ConsoleRoutes() {
@@ -30,6 +31,10 @@ export function ConsoleRoutes() {
     {
       path: '/users/:userId',
       element: <SingleUser />,
+    },
+    {
+      path: '/users/add',
+      element: <AddUser />,
     },
     {
       path: '*',
