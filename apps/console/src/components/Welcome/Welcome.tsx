@@ -3,7 +3,7 @@ import styles from './Welcome.module.scss';
 export function Welcome() {
   return (
     <div className={styles.container}>
-      <h2>Welcome the to Nx POC Dashboard!</h2>
+      <h2 className="text-xl font-bold">Welcome the to Nx POC Dashboard!</h2>
       <h3>Key Technologies used in this demo</h3>
       <ul className="list-disc">
         <li>
@@ -26,6 +26,12 @@ export function Welcome() {
         </li>
         <li>
           <a href="https://sass-lang.com" target="_blank" className="link link-primary">Sass</a> - CSS with superpowers.
+        </li>
+        <li>
+          <a href="https://tailwindcss.com" target="_blank" className="link link-primary">Tailwind</a> - A utility-first CSS framework for rapidly building custom designs.
+        </li>
+        <li>
+          <a href="https://daisyui.com" target="_blank" className="link link-primary">Daisy UI</a> - DaisyUI is a set of ready-to-use Tailwind CSS components.
         </li>
         <li>
           <a href="https://nodejs.org" target="_blank" className="link link-primary">Node</a> - JavaScript runtime built on Chrome's V8 JavaScript engine.

@@ -20,7 +20,7 @@ export function Table({ headers, rows }: TableProps) {
           {rows.map((row, i) => (
             <tr key={i}>
               {row.map((cell: any) => (
-                <td key={cell}>{cell}</td>
+                <td key={cell.id}>{cell}</td>
               ))}
             </tr>
           ))}

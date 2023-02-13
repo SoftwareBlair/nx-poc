@@ -1,7 +1,6 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}

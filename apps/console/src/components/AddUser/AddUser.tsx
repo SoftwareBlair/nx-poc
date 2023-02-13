@@ -1,9 +1,10 @@
 import { useReducer } from 'react';
-import styles from './AddUser.module.scss';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { Input, SvelteWrapper, TextArea } from '@react-ui';
 import { Button } from '@svelte-ui';
 
+import styles from './AddUser.module.scss';
 /* eslint-disable-next-line */
 export interface AddUserProps {}
 interface State {
@@ -39,6 +40,12 @@ export function AddUser(props: AddUserProps) {
         return state;
     }
   }, initialState);
+  const navigate = useNavigate();
+  const buttonDisabled =
+    state.first_name === '' ||
+    state.last_name === '' ||
+    state.email === '' ||
+    state.phone === '';
 
   const submitForm = async () => {
     const res = await fetch('user-api/users', {
@@ -48,13 +55,12 @@ export function AddUser(props: AddUserProps) {
       },
       body: JSON.stringify(state),
     });
-    const data = await res.json();
-    console.log(data);
+    navigate('/users');
   };
 
   return (
-    <div className={styles['container']}>
-            <h2>Add User</h2>
+    <div className={styles.container}>
+      <h2 className="text-xl font-bold">Add User</h2>
       <div className={styles.form}>
         <Input
           label="First Name"
@@ -95,7 +101,17 @@ export function AddUser(props: AddUserProps) {
           onChange={(e) => dispatch({ type: 'DESC', payload: e.target.value })}
         />
         <div className={styles.buttonWrapper}>
-          <SvelteButton label="Submit" onClick={submitForm} />
+          <div className="flex flex-1 w-full align-middle justify-between mt-2">
+            <NavLink to="/users" className="btn btn-warning btn-sm">
+              Cancel
+            </NavLink>
+            <SvelteButton
+              label="Submit"
+              onClick={submitForm}
+              style="btn btn-primary btn-sm"
+              disabled={buttonDisabled}
+            />
+          </div>
         </div>
       </div>
     </div>
