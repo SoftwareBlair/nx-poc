@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom';
 
 import { ConsoleLayout } from '../layouts';
 import {
+  AddProduct,
   AddUser,
   AllProducts,
   AllUsers,
@@ -23,6 +24,10 @@ export function ConsoleRoutes() {
     {
       path: '/products/:productId',
       element: <SingleProduct />,
+    },
+    {
+      path: '/products/add',
+      element: <AddProduct />,
     },
     {
       path: '/users',

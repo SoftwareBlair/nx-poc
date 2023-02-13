@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Table } from '@react-ui';
 
@@ -25,7 +25,7 @@ export function AllProducts() {
         setTableRows(
           data.map((product: Product) => [
             product.id,
-            <Link to={`/products/${product.id}`}>{product.name}</Link>,
+            <NavLink to={`/products/${product.id}`} className="text-blue-600">{product.name}</NavLink>,
             `$${product.price}`,
             product.description,
           ])
@@ -37,17 +37,24 @@ export function AllProducts() {
 
   return (
     <div className={styles.container}>
-      <h2 className="text-lg mb-5">All Products</h2>
-      {loading ? (
-        <div className="flex justify-center">
-          Loading...
+      <div className={styles.productTable}>
+        <div className="flex flex-1 justify-between items-center w-full mb-2">
+          <h3 className="text-xl font-bold">All Products</h3>
+          <NavLink to="/products/add" className="btn btn-primary btn-sm">
+            Add Product
+          </NavLink>
         </div>
-      ) : (
-        <Table
-          headers={tableHeaders}
-          rows={tableRows}
-        />
-      )}
+        {loading ? (
+          <div className="flex justify-center">
+            Loading...
+          </div>
+        ) : (
+          <Table
+            headers={tableHeaders}
+            rows={tableRows}
+          />
+        )}
+      </div>
     </div>
   );
 }

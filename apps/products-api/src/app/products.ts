@@ -34,15 +34,15 @@ export function productRoutes(app: Express) {
   });
 
   app.post('/products-api/products', (req, res) => {
-    const { id, name, price, description } = req.body;
+    const { name, price, description } = req.body;
 
-    if (!id || !name || !price || !description) {
+    if (!name || !price || !description) {
       res.status(400).send({ message: 'Bad request' });
       return;
     }
 
     const newProduct = {
-      id,
+      id: Math.random().toString(36).substring(2),
       name,
       price,
       description

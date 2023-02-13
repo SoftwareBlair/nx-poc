@@ -5,8 +5,7 @@ import { Input, SvelteWrapper, TextArea } from '@react-ui';
 import { Button } from '@svelte-ui';
 
 import styles from './AddUser.module.scss';
-/* eslint-disable-next-line */
-export interface AddUserProps {}
+
 interface State {
   first_name: string;
   last_name: string;
@@ -15,7 +14,8 @@ interface State {
   desc: string;
 }
 
-export function AddUser(props: AddUserProps) {
+export function AddUser() {
+  const navigate = useNavigate();
   const SvelteButton = SvelteWrapper(Button);
   const initialState = {
     first_name: '',
@@ -40,7 +40,6 @@ export function AddUser(props: AddUserProps) {
         return state;
     }
   }, initialState);
-  const navigate = useNavigate();
   const buttonDisabled =
     state.first_name === '' ||
     state.last_name === '' ||

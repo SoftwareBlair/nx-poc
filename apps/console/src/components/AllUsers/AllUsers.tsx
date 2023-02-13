@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Table } from '@react-ui';
 
@@ -15,6 +15,7 @@ export interface User {
 }
 
 export function AllUsers() {
+  const [loading, setLoading] = useState(true);
   const [tableHeaders, setTableHeaders] = useState<string[]>([]);
   const [tableRows, setTableRows] = useState<string[][]>([]);
 
@@ -26,7 +27,7 @@ export function AllUsers() {
         setTableRows(
           data.map((user: User) => [
             user.id,
-            <Link to={`/users/${user.id}`}>{user.first_name}</Link>,
+            <NavLink to={`/users/${user.id}`} className="text-blue-600">{user.first_name}</NavLink>,
             user.last_name,
             user.email,
             user.phone,
@@ -34,7 +35,8 @@ export function AllUsers() {
           ])
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -46,7 +48,13 @@ export function AllUsers() {
             Add User
           </NavLink>
         </div>
-        <Table headers={tableHeaders} rows={tableRows} />
+        {loading ? (
+          <div className="flex justify-center">
+            Loading...
+          </div>
+        ) : (
+          <Table headers={tableHeaders} rows={tableRows} />
+        )}
       </div>
     </div>
   );
