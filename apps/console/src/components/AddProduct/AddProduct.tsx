@@ -9,8 +9,6 @@ import styles from './AddProduct.module.scss';
 interface State {
   name: string;
   price: string;
-  email: string;
-  phone: string;
   description: string;
 }
 
@@ -20,8 +18,6 @@ export function AddProduct() {
   const initialState = {
     name: '',
     price: '',
-    email: '',
-    phone: '',
     description: '',
   };
   const [state, dispatch] = useReducer((state: State, action: any) => {
