@@ -36,13 +36,31 @@ export function AllUsers() {
   }, { show: false, message: '' });
   const tableHeaders = ['ID', 'Name', 'Email', 'Phone', 'Description', ''];
 
+  const userMapper = (user: User) => [
+    user.id,
+    <NavLink
+      to={`/users/${user.id}`}
+      className="text-secondary hover:text-accent"
+    >
+      {user.first_name} {user.last_name}
+    </NavLink>,
+    user.email,
+    user.phone,
+    user.desc,
+    <SvelteButton
+      label="X"
+      style="btn btn-error btn-xs text-base-200"
+      onClick={() => deleteUser(user.id)}
+    />,
+  ];
+
   const deleteUser = (id: string) => {
     fetch(`user-api/users/${id}`, { method: 'DELETE' })
       .then((res) => res.json())
       .then((data) => {
         dispatchToast({
           type: 'show',
-          message: `User by ${data.first_name} ${data.last_name} has been successfully deleted`,
+          message: `${data.first_name} ${data.last_name} has been successfully deleted`,
         });
         setTimeout(() => {
           dispatchToast({ type: 'hide' });
@@ -52,44 +70,14 @@ export function AllUsers() {
       .finally(() => {
         fetch('user-api/users')
           .then((res) => res.json())
-          .then((data) => {
-            setTableRows(
-              data.map((user: User) => [
-                user.id,
-                <NavLink to={`/users/${user.id}`} className="text-blue-600">{user.first_name} {user.last_name}</NavLink>,
-                user.email,
-                user.phone,
-                user.desc,
-                <SvelteButton
-                  label="X"
-                  style="btn btn-error btn-xs text-base-200"
-                  onClick={() => deleteUser(user.id)}
-                />,
-              ])
-            );
-          })
+          .then((data) => setTableRows(data.map(userMapper)))
       })
   };
 
   useEffect(() => {
     fetch('user-api/users')
       .then((res) => res.json())
-      .then((data) => {
-        setTableRows(
-          data.map((user: User) => [
-            user.id,
-            <NavLink to={`/users/${user.id}`} className="text-blue-600">{user.first_name} {user.last_name}</NavLink>,
-            user.email,
-            user.phone,
-            user.desc,
-            <SvelteButton
-              label="X"
-              style="btn btn-error btn-xs text-base-200"
-              onClick={() => deleteUser(user.id)}
-            />,
-          ])
-        );
-      })
+      .then((data) => setTableRows(data.map(userMapper)))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, []);
@@ -115,7 +103,7 @@ export function AllUsers() {
       </div>
       {toast.show && (
         <div className="toast toast-end mb-10">
-          <div className="alert alert-success">
+          <div className="alert alert-warning">
             <div>
               <span>{toast.message}</span>
             </div>
