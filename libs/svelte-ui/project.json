@@ -9,7 +9,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/svelte-ui/**/*.{ts,svelte,spec.ts}"]
+        "lintFilePatterns": ["libs/svelte-ui/**/*.{js,ts,spec.ts,svelte,scss}"]
       }
     },
     "check": {

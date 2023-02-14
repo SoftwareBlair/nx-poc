@@ -37,6 +37,11 @@
         "vite": true
       },
       "rules": {}
+    },
+    {
+      "files": ["*.scss", "*.css"],
+      "extends": ["plugin:@nrwl/nx/sass"],
+      "rules": {}
     }
   ]
 }

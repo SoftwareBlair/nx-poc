@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/console/src",
   "projectType": "application",
+  "implicitDependencies": ["user-api", "products-api"],
   "targets": {
     "build": {
       "executor": "@nrwl/vite:build",
@@ -56,7 +57,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/console/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/console/**/*.{ts,tsx,js,jsx,scss}"]
       }
     },
     "test": {

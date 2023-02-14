@@ -3,8 +3,8 @@ import styles from './Welcome.module.scss';
 export function Welcome() {
   return (
     <div className={styles.container}>
-      <h2 className="text-xl font-bold">Welcome the to Nx POC Dashboard!</h2>
-      <h3>Key Technologies used in this demo</h3>
+      <h2 className="text-2xl font-bold">Welcome the to Nx POC Console!</h2>
+      <h3 className="text-xl">Key Technologies used in this demo</h3>
       <ul className="list-disc">
         <li>
           <a href="https://nx.dev" target="_blank" className="link link-primary">Nx</a> - Monorepo for React, React Native, Node, and more.

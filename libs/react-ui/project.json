@@ -9,7 +9,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/react-ui/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/react-ui/**/*.{ts,tsx,js,jsx,scss}"]
       }
     },
     "build": {
