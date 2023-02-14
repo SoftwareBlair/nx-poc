@@ -12,7 +12,7 @@ export function TextArea(props: TextAreaProps) {
     <div className="form-control">
       <label className="label" htmlFor={props.name}>{props.label}</label>
       <textarea
-        className="textarea textarea-secondary w-full max-w-xs"
+        className="textarea textarea-secondary w-full"
         id={props.name}
         name={props.name}
         value={props.value}

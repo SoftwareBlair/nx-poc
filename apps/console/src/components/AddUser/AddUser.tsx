@@ -100,7 +100,7 @@ export function AddUser() {
           onChange={(e) => dispatch({ type: 'DESC', payload: e.target.value })}
         />
         <div className={styles.buttonWrapper}>
-          <div className="flex flex-1 align-middle justify-between mt-5 w-full max-w-xs">
+          <div className="flex flex-1 align-middle justify-between mt-5 w-full">
             <NavLink to="/users" className="btn btn-warning btn-sm">
               Cancel
             </NavLink>
