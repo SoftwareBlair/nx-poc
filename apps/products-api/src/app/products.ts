@@ -55,7 +55,7 @@ export function productRoutes(app: Express) {
     }
 
     const newProduct = {
-      id: Math.random().toString(36).substring(2),
+      id: Math.floor(Math.random() * 900 + 100).toString(),
       name,
       price,
       description,
@@ -98,7 +98,6 @@ export function productRoutes(app: Express) {
     }
 
     const index = products.findIndex(product => product.id === req.params.id);
-    products.splice(index, 1);
-    res.status(200).send({ message: 'Product deleted' });
+    res.status(200).send(products.splice(index, 1)[0]);
   });
 }

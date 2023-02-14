@@ -88,7 +88,7 @@ export function AllUsers() {
         <div className={styles.usersTable}>
           <div className="flex flex-1 justify-between items-center w-full mb-2">
             <h3 className="text-xl font-bold">All Users</h3>
-            <NavLink to="/users/add" className="btn btn-primary btn-sm">
+            <NavLink to="/users/add" className="btn btn-secondary btn-sm">
               Add User
             </NavLink>
           </div>

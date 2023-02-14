@@ -57,7 +57,7 @@ export function AllProducts() {
     fetch(`products-api/products/${id}`, { method: 'DELETE' })
       .then((res) => res.json())
       .then((data) => {
-        dispatchToast({ type: 'show', message: data.message });
+        dispatchToast({ type: 'show', message: `${data.name} has been deleted` });
         setTimeout(() => dispatchToast({ type: 'hide' }), 5000);
       })
       .catch((err) => console.error(err))
@@ -85,7 +85,7 @@ export function AllProducts() {
         <div className={styles.productTable}>
           <div className="flex flex-1 justify-between items-center w-full mb-2">
             <h3 className="text-xl font-bold">All Products</h3>
-            <NavLink to="/products/add" className="btn btn-primary btn-sm">
+            <NavLink to="/products/add" className="btn btn-secondary btn-sm">
               Add Product
             </NavLink>
           </div>
