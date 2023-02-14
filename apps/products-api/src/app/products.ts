@@ -9,23 +9,36 @@ interface Products {
 
 export const products: Products[] = [
   {
-    id: '1',
+    id: '123',
     name: 'Product 1',
-    price: 100,
-    description: 'This is product 1'
+    price: 49.99,
+    description: 'A high-quality product that is built to last.',
   },
   {
-    id: '2',
+    id: '345',
     name: 'Product 2',
-    price: 200,
-    description: 'This is product 2'
+    price: 59.99,
+    description: 'An innovative product that is designed for maximum efficiency.',
   },
   {
-    id: '3',
+    id: '456',
     name: 'Product 3',
-    price: 300,
-    description: 'This is product 3'
+    price: 79.99,
+    description: 'A premium product that offers superior performance and reliability.',
   },
+  {
+    id: '678',
+    name: 'Product 4',
+    price: 89.99,
+    description: 'A high-end product that is perfect for demanding applications.',
+  },
+  {
+    id: '890',
+    name: 'Product 5',
+    price: 99.99,
+    description: 'A cutting-edge product that sets the standard for quality and performance.',
+  }
+
 ];
 
 export function productRoutes(app: Express) {
@@ -45,7 +58,7 @@ export function productRoutes(app: Express) {
       id: Math.random().toString(36).substring(2),
       name,
       price,
-      description
+      description,
     };
 
     products.push(newProduct);

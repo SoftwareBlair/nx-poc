@@ -60,7 +60,7 @@ export function AddUser() {
   return (
     <div className={styles.container}>
       <h2 className="text-xl font-bold">Add User</h2>
-      <div className={styles.form}>
+      <div className="w-full max-w-sm">
         <Input
           label="First Name"
           name='first_name'
@@ -100,7 +100,7 @@ export function AddUser() {
           onChange={(e) => dispatch({ type: 'DESC', payload: e.target.value })}
         />
         <div className={styles.buttonWrapper}>
-          <div className="flex flex-1 w-full align-middle justify-between mt-2">
+          <div className="flex flex-1 align-middle justify-between mt-5 w-full max-w-xs">
             <NavLink to="/users" className="btn btn-warning btn-sm">
               Cancel
             </NavLink>

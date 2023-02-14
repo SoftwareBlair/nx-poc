@@ -10,10 +10,10 @@ export interface InputProps {
 
 export function Input(props: InputProps) {
   return (
-    <div className={styles.inputContainer}>
-      <label className={styles.label} htmlFor={props.name}>{props.label}</label>
+    <div className="form-control w-full max-w-xs">
+      <label className="label" htmlFor={props.name}>{props.label}</label>
       <input
-        className={styles.input}
+        className="input input-bordered input-secondary w-full max-w-xs"
         id={props.name}
         name={props.name}
         value={props.value}
