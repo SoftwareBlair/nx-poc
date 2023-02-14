@@ -20,7 +20,7 @@ export function Table({ headers, rows }: TableProps) {
           {rows.map((row, i) => (
             <tr key={i}>
               {row.map((cell: any, i) => (
-                <td className="truncate max-w-xs" key={i}>{cell}</td>
+                <td className="truncate max-w-xs last:text-end" key={i}>{cell}</td>
               ))}
             </tr>
           ))}
