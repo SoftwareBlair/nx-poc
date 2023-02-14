@@ -60,7 +60,7 @@ export function AllUsers() {
       .then((data) => {
         dispatchToast({
           type: 'show',
-          message: `${data.first_name} ${data.last_name} has been successfully deleted`,
+          message: `${data.first_name} ${data.last_name} has been deleted`,
         });
         setTimeout(() => {
           dispatchToast({ type: 'hide' });
