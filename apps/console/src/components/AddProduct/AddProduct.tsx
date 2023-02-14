@@ -84,12 +84,17 @@ export function AddProduct() {
             <NavLink to="/products" className="btn btn-warning btn-sm">
               Cancel
             </NavLink>
-            <SvelteButton
-              label="Submit"
-              onClick={submitForm}
-              style="btn btn-primary btn-sm"
-              disabled={buttonDisabled}
-            />
+            <div
+              className="tooltip tooltip-info tooltip-bottom"
+              data-tip="I'm a button built with Svelte"
+            >
+              <SvelteButton
+                label="Submit"
+                onClick={submitForm}
+                style="btn btn-primary btn-sm"
+                disabled={buttonDisabled}
+              />
+            </div>
           </div>
         </div>
       </div>

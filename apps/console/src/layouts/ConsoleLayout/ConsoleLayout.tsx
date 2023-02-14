@@ -32,8 +32,12 @@ function ConsoleLayout({ children }: UserConsoleLayoutProps) {
         {children}
       </main>
 
-      <footer className={styles.footer}>
-        <p>Footer</p>
+      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+        <p className="text-secondary">
+          <a href="https://nx.dev" target="_blank" rel="noopener noreferrer">
+            Nx POC
+          </a>
+        </p>
       </footer>
     </>
   );
