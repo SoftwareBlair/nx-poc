@@ -36,26 +36,28 @@ export function AllProducts() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.productTable}>
-        <div className="flex flex-1 justify-between items-center w-full mb-2">
-          <h3 className="text-xl font-bold">All Products</h3>
-          <NavLink to="/products/add" className="btn btn-primary btn-sm">
-            Add Product
-          </NavLink>
-        </div>
-        {loading ? (
-          <div className="flex justify-center">
-            Loading...
+    <>
+      <div className={styles.container}>
+        <div className={styles.productTable}>
+          <div className="flex flex-1 justify-between items-center w-full mb-2">
+            <h3 className="text-xl font-bold">All Products</h3>
+            <NavLink to="/products/add" className="btn btn-primary btn-sm">
+              Add Product
+            </NavLink>
           </div>
-        ) : (
-          <Table
-            headers={tableHeaders}
-            rows={tableRows}
-          />
-        )}
+          {loading ? (
+            <div className="flex justify-center">
+              Loading...
+            </div>
+          ) : (
+            <Table
+              headers={tableHeaders}
+              rows={tableRows}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
