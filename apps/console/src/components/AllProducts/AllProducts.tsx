@@ -37,6 +37,7 @@ export function AllProducts() {
   const productMapper = (product: Product) => [
     product.id,
     <NavLink
+      key={product.id}
       to={`/products/${product.id}`}
       className="text-secondary hover:text-accent"
     >
@@ -45,6 +46,7 @@ export function AllProducts() {
     `$${product.price}`,
     product.description,
     <SvelteButton
+      key={product.id}
       label="X"
       style="btn btn-error btn-xs text-base-200"
       onClick={() => deleteProduct(product.id)}

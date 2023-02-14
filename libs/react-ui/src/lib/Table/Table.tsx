@@ -19,8 +19,8 @@ export function Table({ headers, rows }: TableProps) {
         <tbody>
           {rows.map((row, i) => (
             <tr key={i}>
-              {row.map((cell: any) => (
-                <td className="truncate max-w-xs" key={cell.id}>{cell}</td>
+              {row.map((cell: any, i) => (
+                <td className="truncate max-w-xs" key={i}>{cell}</td>
               ))}
             </tr>
           ))}
