@@ -16,19 +16,18 @@ export interface User {
 
 export function AllUsers() {
   const [loading, setLoading] = useState(true);
-  const [tableHeaders, setTableHeaders] = useState<string[]>([]);
+  // const [tableHeaders, setTableHeaders] = useState<string[]>([]);
   const [tableRows, setTableRows] = useState<string[][]>([]);
+  const tableHeaders = ['ID', 'Name', 'Email', 'Phone', 'Description'];
 
   useEffect(() => {
     fetch('user-api/users')
       .then((res) => res.json())
       .then((data) => {
-        setTableHeaders(Object.keys(data[0]));
         setTableRows(
           data.map((user: User) => [
             user.id,
-            <NavLink to={`/users/${user.id}`} className="text-blue-600">{user.first_name}</NavLink>,
-            user.last_name,
+            <NavLink to={`/users/${user.id}`} className="text-blue-600">{user.first_name} {user.last_name}</NavLink>,
             user.email,
             user.phone,
             user.desc,
