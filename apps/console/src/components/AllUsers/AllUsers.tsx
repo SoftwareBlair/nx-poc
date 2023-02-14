@@ -16,7 +16,6 @@ export interface User {
 
 export function AllUsers() {
   const [loading, setLoading] = useState(true);
-  // const [tableHeaders, setTableHeaders] = useState<string[]>([]);
   const [tableRows, setTableRows] = useState<string[][]>([]);
   const tableHeaders = ['ID', 'Name', 'Email', 'Phone', 'Description'];
 
