@@ -107,16 +107,26 @@ export function SingleProduct() {
               />
             </div>
             <div className="card-actions justify-between mt-3">
-              <SvelteButton
-                label="Cancel"
-                onClick={() => setIsEditing(false)}
-                style="btn btn-sm btn-warning"
-              />
-              <SvelteButton
-                label="Save"
-                onClick={updateProduct}
-                style="btn btn-sm btn-primary"
-              />
+              <div
+                className="tooltip tooltip-info tooltip-bottom"
+                data-tip="I'm a button built with Svelte"
+              >
+                <SvelteButton
+                  label="Cancel"
+                  onClick={() => setIsEditing(false)}
+                  style="btn btn-sm btn-warning"
+                />
+              </div>
+              <div
+                className="tooltip tooltip-info tooltip-bottom"
+                data-tip="I'm a button built with Svelte"
+              >
+                <SvelteButton
+                  label="Save"
+                  onClick={updateProduct}
+                  style="btn btn-sm btn-primary"
+                />
+              </div>
             </div>
           </div>
         </div>
