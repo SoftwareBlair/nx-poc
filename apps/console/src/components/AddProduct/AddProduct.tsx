@@ -73,7 +73,9 @@ export function AddProduct() {
           label="Description"
           name='description'
           value={state.description}
-          onChange={(e) => dispatch({ type: 'DESCRIPTION', payload: e.target.value })}
+          onChange={(e) =>
+            dispatch({ type: 'DESCRIPTION', payload: e.target.value })
+          }
         />
         <div className={styles.buttonWrapper}>
           <div className="flex flex-1 align-middle justify-between mt-5 w-full">
