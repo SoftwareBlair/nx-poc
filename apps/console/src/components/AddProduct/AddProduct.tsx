@@ -49,7 +49,7 @@ export function AddProduct() {
 
   return (
     <div className={styles.container}>
-      <h2 className="text-xl font-bold">Add User</h2>
+      <h2 className="text-xl font-bold">Add Product</h2>
       <div className="w-full max-w-sm">
         <Input
           label="Name"
